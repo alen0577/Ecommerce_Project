@@ -1,0 +1,54 @@
+{% extends 'manage/base.html' %}
+
+{% block title %}
+Add Product
+{% endblock title %}
+
+
+{% block body %}
+<div class="container">
+    <h3 class="alert alert-dark text-center mb-5 w-50">
+        Add Product
+    </h3>
+        <form method="post" action="{% url 'addproduct' %}" enctype="multipart/form-data" >
+            {% csrf_token %}
+            <input type="text" name="pname" class="form-control mt-3" placeholder="Enter Product Name">
+            <input type="text" name="pdes" class="form-control mt-3" placeholder="Enter Product Description">
+            <input type="number" name="pprice" class="form-control mt-3 mb-3" placeholder="Enter Price">
+            <input type="number" name="pqty" class="form-control mt-3 mb-3" placeholder="Enter Quantity">
+            <input type="file" name="pimg" class="form-control mt-3 mb-3">
+            
+
+            <!-- <input type="date" name="joindate" class="form-control mt-3 mb-3" placeholder="Enter Joining Date"> -->
+
+            <select class="form-control" name="select" id="qwerty">
+                {% for i in category %}
+
+                <option value="{{ i.id }}">{{ i.category_name }}</option>
+
+                {% endfor %}
+            </select>
+
+
+            <button type="submit" class="btn btn-dark mt-3 " style="width: 650px;">Submit</button>
+        </form>
+</div>
+
+<style>
+.container{
+    position: absolute;
+    left: 30%;
+    top: 27%;
+}
+input[type=text],[type=number],[type=file]{
+    width: 650px;
+}
+#qwerty{
+    width: 650px;
+}
+/* .btn{
+    width: 600px;
+} */
+</style>
+
+{% endblock %}

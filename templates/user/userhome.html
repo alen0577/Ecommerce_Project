@@ -1,0 +1,87 @@
+{% extends 'user/base.html' %}
+{% block title %}
+Home
+{% endblock %}
+
+
+{% block body %}
+{% include 'carousel.html' %}
+
+<style>
+    body{
+        background-color: black;
+    }
+    div.footer{
+    height: 150px;
+    background-color: rgb(251, 251, 251);
+    color: rgb(246, 110, 19);
+    margin-top: 10px;
+    }
+    h1{
+        color: rgb(246, 110, 19);
+        margin: 10px;
+        
+    }
+    div.section{
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    div.card{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+</style>
+
+<div class="navbar">
+    <marquee behavior="" direction="">FLASH SALE ENDS SOON...</marquee>
+  
+</div>
+
+
+<div class="section">
+
+
+    <div class="container">
+        <h1 class="text-center">TRENDING PRODUCTS</h1>
+        <div class="row">
+            {% for i in product %}
+            <div class="col-4">
+    
+                <div class="card" style="width: 18rem;">
+                    <img src="{{i.pimg.url}}" class="card-img-top" alt="..." style="height: 200px;">
+                    <div class="card-body">
+                      <h5 class="card-title">Name:{{i.pname}}</h5>
+                      <p class="card-text">Description:{{i.pdes|truncatewords:4}}</p>
+                      <p class="card-text">Price:{{i.pprice}}</p>
+                      <a href="{% url 'addcart' i.id %}" class="btn btn-dark">Add to Cart</a>
+                    </div>
+                </div>
+    
+    
+                
+                
+               
+                
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+{% include 'footer.html' %}
+
+{% endblock %}

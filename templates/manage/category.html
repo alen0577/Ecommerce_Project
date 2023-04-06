@@ -1,0 +1,36 @@
+{% extends 'manage/base.html' %}
+
+{% block title %}
+Add Category
+{% endblock title %}
+
+
+{% block body %}
+
+<div class="container">
+    <h3 class="alert alert-dark text-center mb-5 w-50">
+        Add Category
+    </h3>
+        <form method="post" action="{% url 'addcategory' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="text" name="catagoryname" class="form-control mt-3" placeholder="Enter Category Name">
+            <input type="file" name="cat_img" class="form-control mt-3" accept="image/*" >
+            
+            <button type="submit" class="btn btn-dark mt-3 " style="width: 650px;">Submit</button>
+        </form>
+</div>
+<style>
+.container{
+    position: absolute;
+    left: 30%;
+    top: 27%;
+}
+input[type=text],[type=number],[type=file]{
+    width: 650px;
+}
+/* .btn{
+    width: 600px;
+} */
+</style>
+
+{% endblock %}

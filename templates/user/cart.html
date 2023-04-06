@@ -1,0 +1,65 @@
+{% extends 'user/base.html' %}
+
+{% block title %}
+Cart
+{% endblock title %}
+
+
+{% block body %}
+
+
+
+
+<div class="container mt-5">
+    <h3 class="alert alert-dark text-center mb-5">
+        CART DETAILS
+    </h3>
+    <div class="row">
+        <div class="col-sm-10">
+            <table class="table table-dark table-hover text-center ">
+                <thead>
+                    <tr>
+                        <th>NAME</th>
+                        <th>PRICE</th>
+                        <th>CATEGORY</th>
+                        <th>IMAGE</th>
+                        <th>ACTION</th>
+                        
+                        
+                    </tr>
+                </thead>
+                {% for p in cartitems %}
+                <tbody>
+                    
+                    <tr>
+                        <td>{{ p.product.pname}}</td>
+                        <td>{{ p.product.pprice}}</td>
+                        <td>{{ p.product.pcat.category_name}}</td>  
+                        <td>
+                            {% if p.product.pimg %}
+                            <img src="{{ p.product.pimg.url }}" alt="" style="width: 200px;"></td>
+                            {% endif %}   
+                        <td>
+                            <a href="#"><button>Buy Now</button></a>
+                            <a href="{% url 'deleteitem' p.id %}"><button>Delete</button></a>
+                        </td>
+                        
+                    </tr>
+                    
+                </tbody> 
+                {% endfor %}
+        </div>
+    </div>
+    
+</div>
+
+
+
+<style>
+.table{
+    width: 120%;
+}
+</style>
+
+
+{% endblock %}
